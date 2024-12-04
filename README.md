@@ -1,6 +1,6 @@
 # Proyecto Estructuras
 
-Este proyecto es una página web interactiva que sirve como un manual para el usuario. Al hacer clic en los botones disponibles, se muestra información detallada sobre diferentes temas.
+Este proyecto es una página web interactiva para el usuario. Al hacer clic en los botones disponibles, se muestra información detallada sobre diferentes temas.
 
 ## Características
 - Página web con diseño sencillo e intuitivo.
