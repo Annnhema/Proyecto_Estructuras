@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Two Dimensional Arrays</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Two Dimensional Arrays</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Arrays Bidimensionales</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Un <strong>array bidimensional</strong> es una estructura de datos que se puede representar como una tabla o matriz, donde cada elemento es accesible mediante dos índices. Es una colección de arrays unidimensionales, por lo que puedes pensar en él como una "matriz" o "tabla" de filas y columnas.<br><br>
+
+                <strong>Características:</strong><br>
+                - <strong>Acceso por dos índices:</strong> Los elementos se acceden usando dos índices, uno para la fila y otro para la columna.<br>
+                - <strong>Dimensionalidad:</strong> Un array bidimensional tiene una dimensión de 2, es decir, filas y columnas.<br>
+                - <strong>Almacenamiento contiguo:</strong> Al igual que los arrays unidimensionales, los arrays bidimensionales suelen ser almacenados de forma contigua en memoria.<br>
+                - <strong>Tamaño fijo:</strong> Los tamaños de las filas y las columnas se deben definir al momento de la creación en algunos lenguajes como C o Java, mientras que en lenguajes como Python o JavaScript, pueden ser dinámicos.<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. <strong>Acceso:</strong> Obtener el valor de un elemento en una posición <code>[i][j]</code>.<br>
+                   <code>array[i][j]</code><br><br>
+                2. <strong>Modificación:</strong> Cambiar el valor de un elemento en la posición <code>[i][j]</code>.<br>
+                   <code>array[i][j] = nuevo_valor</code><br><br>
+                3. <strong>Recorrido:</strong> Iterar sobre todas las filas y columnas del array.<br>
+                   <code>for i in range(filas): <br>  &nbsp;&nbsp;&nbsp;&nbsp; for j in range(columnas): <br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print(array[i][j])</code><br><br>
+                4. <strong>Inserción:</strong> Insertar un nuevo array (fila) o un elemento dentro de una fila.<br>
+                   <code>array[i].insert(j, valor)</code><br><br>
+                5. <strong>Eliminación:</strong> Eliminar un elemento o una fila.<br>
+                   <code>del array[i][j]</code><br><br>
+
+                <strong>Ejemplos:</strong><br>
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code># Definición de un array bidimensional (matriz 3x3)
+              matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+              
+              # Acceder a un elemento
+              print(matriz[1][2])  # Salida: 6
+              
+              # Modificar un elemento
+              matriz[0][1] = 10
+              print(matriz)  # Salida: [[1, 10, 3], [4, 5, 6], [7, 8, 9]]
+              
+              # Recorrer el array bidimensional
+              for i in range(len(matriz)):
+                  for j in range(len(matriz[i])):
+                      print(matriz[i][j], end=" ")
+                  print()
+              
+              # Salida:
+              # 1 10 3
+              # 4 5 6
+              # 7 8 9
+              </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>#include &lt;stdio.h&gt;
+
+              int main() {
+                  // Definir una matriz 3x3
+                  int matriz[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+
+                  // Acceder a un elemento
+                  printf("%d\n", matriz[1][2]);  // Salida: 6
+
+                  // Modificar un elemento
+                  matriz[0][1] = 10;
+                  printf("%d\n", matriz[0][1]);  // Salida: 10
+
+                  // Recorrer la matriz
+                  for (int i = 0; i < 3; i++) {
+                      for (int j = 0; j < 3; j++) {
+                          printf("%d ", matriz[i][j]);
+                      }
+                      printf("\n");
+                  }
+
+                  // Salida:
+                  // 1 10 3
+                  // 4 5 6
+                  // 7 8 9
+
+                  return 0;
+              }
+              </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>// Definir un array bidimensional
+              let matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+              // Acceder a un elemento
+              console.log(matriz[1][2]);  // Salida: 6
+
+              // Modificar un elemento
+              matriz[0][1] = 10;
+              console.log(matriz[0][1]);  // Salida: 10
+
+              // Recorrer el array bidimensional
+              matriz.forEach(fila => {
+                  fila.forEach(elemento => {
+                      console.log(elemento);
+                  });
+              });
+
+              // Salida:
+              // 1
+              // 10
+              // 3
+              // 4
+              // 5
+              // 6
+              // 7
+              // 8
+              // 9
+              </code></pre><br>
+
+                <strong>Tipos de Arrays Bidimensionales:</strong><br>
+                1. <strong>Arrays de arrays:</strong> Cada fila es un array independiente que contiene sus propios elementos.<br>
+                2. <strong>Matrices:</strong> El array bidimensional se puede ver como una tabla de datos.<br><br>
+
+                <strong>Desventajas de los Arrays Bidimensionales:</strong><br>
+                - <strong>Espacio en memoria:</strong> Los arrays bidimensionales pueden ocupar más memoria en comparación con los arrays unidimensionales.<br>
+                - <strong>Complejidad en el manejo:</strong> Las operaciones en arrays bidimensionales suelen ser más complejas debido a la necesidad de manejar dos índices.<br><br>
+
+                <strong>Comparación con otras estructuras de datos:</strong><br>
+                - Los <strong>arrays bidimensionales</strong> ofrecen un acceso rápido a los elementos, pero son menos flexibles que las <strong>listas enlazadas</strong> en las que el tamaño puede cambiar dinámicamente.<br>
+                - Son más fáciles de usar para representar tablas de datos que las <strong>listas enlazadas</strong>, pero menos eficientes en términos de inserciones y eliminaciones de elementos.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

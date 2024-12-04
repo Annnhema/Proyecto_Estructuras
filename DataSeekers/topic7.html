@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Circular Linked List</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Circular Linked List</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Listas Enlazadas Circulares</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Una <strong>lista enlazada circular</strong> es una variante de la lista enlazada donde el último nodo apunta de nuevo al primer nodo, formando un ciclo. A diferencia de una lista enlazada simple, que tiene un puntero nulo al final, en una lista circular el último nodo mantiene una referencia al primero.<br><br>
+
+                <strong>Características:</strong><br>
+                - El último nodo de la lista está conectado al primer nodo, creando un ciclo.<br>
+                - No hay un nodo "final" con puntero nulo. La lista puede ser recorrida infinitamente sin llegar a un valor nulo.<br>
+                - Es útil en situaciones donde se necesita recorrer los elementos repetidamente, como en la implementación de estructuras de datos cíclicas (ej. juegos, aplicaciones de reloj, etc.).<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. <strong>Insertar al principio:</strong> Insertar un nuevo nodo al principio de la lista circular.<br>
+                   <code>list.insertFirst(elemento)</code><br><br>
+                2. <strong>Insertar al final:</strong> Insertar un nuevo nodo al final de la lista circular.<br>
+                   <code>list.insertLast(elemento)</code><br><br>
+                3. <strong>Eliminar el primer nodo:</strong> Eliminar el primer nodo de la lista circular.<br>
+                   <code>list.removeFirst()</code><br><br>
+                4. <strong>Eliminar el último nodo:</strong> Eliminar el último nodo de la lista circular.<br>
+                   <code>list.removeLast()</code><br><br>
+                5. <strong>Recorrido:</strong> Recorrer todos los nodos en la lista circular.<br>
+                   <code>list.print()</code><br><br>
+
+                <strong>Ejemplo de implementación en pseudocódigo:</strong><br>
+                <pre><code>
+                class Node {
+                    data
+                    next
+                }
+
+                class CircularLinkedList {
+                    head
+
+                    insertFirst(elemento) {
+                        let newNode = new Node(elemento)
+                        if (this.head == null) {
+                            this.head = newNode
+                            newNode.next = this.head
+                        } else {
+                            let current = this.head
+                            while (current.next != this.head) {
+                                current = current.next
+                            }
+                            current.next = newNode
+                            newNode.next = this.head
+                            this.head = newNode
+                        }
+                    }
+
+                    insertLast(elemento) {
+                        let newNode = new Node(elemento)
+                        if (this.head == null) {
+                            this.head = newNode
+                            newNode.next = this.head
+                        } else {
+                            let current = this.head
+                            while (current.next != this.head) {
+                                current = current.next
+                            }
+                            current.next = newNode
+                            newNode.next = this.head
+                        }
+                    }
+
+                    print() {
+                        let current = this.head
+                        do {
+                            console.log(current.data)
+                            current = current.next
+                        } while (current != this.head)
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include <stdio.h>
+                #include <stdlib.h>
+
+                struct Node {
+                    int data;
+                    struct Node* next;
+                };
+
+                struct CircularLinkedList {
+                    struct Node* head;
+                };
+
+                void insertFirst(struct CircularLinkedList* list, int elemento) {
+                    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+                    newNode->data = elemento;
+                    if (list->head == NULL) {
+                        list->head = newNode;
+                        newNode->next = list->head;
+                    } else {
+                        struct Node* current = list->head;
+                        while (current->next != list->head) {
+                            current = current->next;
+                        }
+                        current->next = newNode;
+                        newNode->next = list->head;
+                        list->head = newNode;
+                    }
+                }
+
+                void print(struct CircularLinkedList* list) {
+                    struct Node* current = list->head;
+                    if (current == NULL) {
+                        printf("Lista vacía\n");
+                        return;
+                    }
+                    do {
+                        printf("%d -> ", current->data);
+                        current = current->next;
+                    } while (current != list->head);
+                    printf("...\n");
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                class Node {
+                    constructor(data) {
+                        this.data = data
+                        this.next = null
+                    }
+                }
+
+                class CircularLinkedList {
+                    constructor() {
+                        this.head = null
+                    }
+
+                    insertFirst(elemento) {
+                        let newNode = new Node(elemento)
+                        if (this.head == null) {
+                            this.head = newNode
+                            newNode.next = this.head
+                        } else {
+                            let current = this.head
+                            while (current.next != this.head) {
+                                current = current.next
+                            }
+                            current.next = newNode
+                            newNode.next = this.head
+                            this.head = newNode
+                        }
+                    }
+
+                    print() {
+                        let current = this.head
+                        if (!current) {
+                            console.log("Lista vacía")
+                            return
+                        }
+                        do {
+                            console.log(current.data)
+                            current = current.next
+                        } while (current != this.head)
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ventajas de las listas enlazadas circulares:</strong><br>
+                - Permiten recorrer la lista de manera continua, lo cual es útil en ciertas aplicaciones, como en sistemas de "round-robin" (planificación de procesos) y en juegos donde los jugadores deben ser recorridos en ciclo.<br>
+                - El uso de listas circulares puede hacer que las operaciones de inserción y eliminación sean más rápidas y fáciles de manejar cuando se utiliza el último nodo.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - El recorrido de la lista puede ser más complicado si no se tiene cuidado con el ciclo.<br>
+                - Si se olvida actualizar correctamente los enlaces, se puede terminar con un ciclo infinito.<br><br>
+
+                <strong>Comparación con listas enlazadas simples:</strong><br>
+                - La principal diferencia es que en una lista circular, el último nodo apunta de nuevo al primer nodo, mientras que en una lista enlazada simple el último nodo apunta a null.<br>
+                - Las listas circulares son ideales para casos donde se necesita recorrer los elementos en forma continua sin preocuparse por el final de la lista.<br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

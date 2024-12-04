@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Tree Search</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Tree Search</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Tree Search</strong><br><br>
+
+                **Tree Search** es un algoritmo que se utiliza para buscar un elemento en una estructura de árbol, como un árbol binario. A medida que se recorre el árbol, el algoritmo sigue una serie de decisiones basadas en las propiedades de la estructura (por ejemplo, si el valor buscado es menor o mayor que el nodo actual).<br><br>
+
+                **Características del Tree Search:**
+                - **Estructura jerárquica:** Utiliza la estructura de árbol para organizar los elementos.
+                - **Recorridos específicos:** El árbol se puede recorrer de diferentes maneras (preorden, inorden, postorden) dependiendo de la aplicación.
+                - **Eficiencia:** El algoritmo de búsqueda en árbol tiene un mejor rendimiento que la búsqueda lineal si el árbol está balanceado, con una complejidad O(log n) en el mejor caso.
+
+                **Pasos del algoritmo:**
+                1. Comienza desde la raíz del árbol.
+                2. Compara el valor buscado con el valor del nodo actual.
+                3. Si el valor buscado es menor, sigue el subárbol izquierdo.
+                4. Si el valor buscado es mayor, sigue el subárbol derecho.
+                5. Si el valor es encontrado, devuelve el nodo.
+                6. Si el valor no se encuentra y se llega a una hoja, el valor no está en el árbol.
+
+                **Ejemplo en pseudocódigo:**
+                <pre><code>
+                function treeSearch(node, target):
+                    if node == null:
+                        return null
+                    if node.value == target:
+                        return node
+                    if target < node.value:
+                        return treeSearch(node.left, target)
+                    else:
+                        return treeSearch(node.right, target)
+                </code></pre><br>
+
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code>
+                class Node:
+                    def __init__(self, value):
+                        self.value = value
+                        self.left = None
+                        self.right = None
+
+                def tree_search(node, target):
+                    if node is None or node.value == target:
+                        return node
+                    if target < node.value:
+                        return tree_search(node.left, target)
+                    return tree_search(node.right, target)
+
+                # Árbol de ejemplo
+                root = Node(10)
+                root.left = Node(5)
+                root.right = Node(15)
+
+                target = 5
+                result = tree_search(root, target)
+                if result:
+                    print(f"Elemento encontrado: {result.value}")
+                else:
+                    print("Elemento no encontrado")
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+                #include &lt;stdlib.h&gt;
+
+                typedef struct Node {
+                    int value;
+                    struct Node* left;
+                    struct Node* right;
+                } Node;
+
+                Node* treeSearch(Node* root, int target) {
+                    if (root == NULL || root->value == target)
+                        return root;
+                    if (target < root->value)
+                        return treeSearch(root->left, target);
+                    return treeSearch(root->right, target);
+                }
+
+                int main() {
+                    Node* root = (Node*)malloc(sizeof(Node));
+                    root->value = 10;
+                    root->left = (Node*)malloc(sizeof(Node));
+                    root->left->value = 5;
+                    root->right = (Node*)malloc(sizeof(Node));
+                    root->right->value = 15;
+
+                    int target = 5;
+                    Node* result = treeSearch(root, target);
+                    if (result)
+                        printf("Elemento encontrado: %d\n", result->value);
+                    else
+                        printf("Elemento no encontrado\n");
+
+                    return 0;
+                }
+                </code></pre><br>
+
+                **Ventajas del Tree Search:**
+                - Si el árbol está balanceado, la búsqueda es rápida (O(log n)).
+                - Estructura flexible que puede ser fácilmente expandida.
+
+                **Desventajas del Tree Search:**
+                - Si el árbol no está balanceado, la búsqueda puede ser tan lenta como la búsqueda lineal (O(n)).
+                - La implementación de árboles balanceados puede ser compleja.
+
+            </p>
+        </div>
+    </div>
+</body>
+</html>

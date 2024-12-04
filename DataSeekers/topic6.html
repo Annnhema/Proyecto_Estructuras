@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Queue using Linked List</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Queue using Linked List</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Colas usando Listas Enlazadas</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Una <strong>cola</strong> (queue) es una estructura de datos en la que los elementos se agregan siguiendo la política FIFO (First In, First Out), es decir, el primer elemento en entrar es el primero en salir. En el caso de una cola implementada usando una lista enlazada, los elementos se almacenan en nodos enlazados, con una referencia al siguiente nodo.<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. <strong>Enqueue:</strong> Agregar un elemento al final de la cola.<br>
+                   <code>queue.enqueue(elemento)</code><br><br>
+                2. <strong>Dequeue:</strong> Eliminar el primer elemento de la cola.<br>
+                   <code>queue.dequeue()</code><br><br>
+                3. <strong>Peek:</strong> Ver el primer elemento sin eliminarlo.<br>
+                   <code>queue.peek()</code><br><br>
+                4. <strong>IsEmpty:</strong> Verificar si la cola está vacía.<br>
+                   <code>queue.isEmpty()</code><br><br>
+
+                <strong>Ejemplo de implementación en pseudocódigo:</strong><br>
+                <pre><code>
+                class Node {
+                    data
+                    next
+                }
+
+                class Queue {
+                    front
+                    rear
+                    
+                    enqueue(elemento) {
+                        nuevoNodo = new Node(elemento)
+                        if (this.rear == null) {
+                            this.front = this.rear = nuevoNodo
+                            return
+                        }
+                        this.rear.next = nuevoNodo
+                        this.rear = nuevoNodo
+                    }
+
+                    dequeue() {
+                        if (this.front == null) {
+                            return "Cola vacía"
+                        }
+                        elemento = this.front.data
+                        this.front = this.front.next
+                        return elemento
+                    }
+
+                    peek() {
+                        if (this.front != null) {
+                            return this.front.data
+                        }
+                        return "Cola vacía"
+                    }
+
+                    isEmpty() {
+                        return this.front == null
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include <stdio.h>
+                #include <stdlib.h>
+
+                struct Node {
+                    int data;
+                    struct Node* next;
+                };
+
+                struct Queue {
+                    struct Node* front;
+                    struct Node* rear;
+                };
+
+                void enqueue(struct Queue* queue, int elemento) {
+                    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+                    newNode->data = elemento;
+                    newNode->next = NULL;
+                    if (queue->rear == NULL) {
+                        queue->front = queue->rear = newNode;
+                        return;
+                    }
+                    queue->rear->next = newNode;
+                    queue->rear = newNode;
+                }
+
+                int dequeue(struct Queue* queue) {
+                    if (queue->front == NULL) {
+                        printf("Cola vacía\n");
+                        return -1;
+                    }
+                    int elemento = queue->front->data;
+                    struct Node* temp = queue->front;
+                    queue->front = queue->front->next;
+                    free(temp);
+                    return elemento;
+                }
+
+                int peek(struct Queue* queue) {
+                    if (queue->front != NULL) {
+                        return queue->front->data;
+                    }
+                    printf("Cola vacía\n");
+                    return -1;
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                class Queue {
+                    constructor() {
+                        this.front = null
+                        this.rear = null
+                    }
+
+                    enqueue(elemento) {
+                        let newNode = { data: elemento, next: null }
+                        if (this.rear == null) {
+                            this.front = this.rear = newNode
+                            return
+                        }
+                        this.rear.next = newNode
+                        this.rear = newNode
+                    }
+
+                    dequeue() {
+                        if (this.front == null) {
+                            console.log("Cola vacía")
+                            return
+                        }
+                        let elemento = this.front.data
+                        this.front = this.front.next
+                        return elemento
+                    }
+
+                    peek() {
+                        if (this.front != null) {
+                            return this.front.data
+                        }
+                        console.log("Cola vacía")
+                        return
+                    }
+
+                    isEmpty() {
+                        return this.front == null
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Comparación con otras estructuras de datos:</strong><br>
+                - La <strong>cola usando lista enlazada</strong> permite una inserción eficiente (O(1)) al final de la cola, sin importar el tamaño de la cola.<br>
+                - A diferencia de las <strong>colas estáticas</strong> (usando arrays), que pueden necesitar redimensionarse, la cola enlazada no tiene límite de tamaño predefinido.<br>
+                - Las operaciones de inserción y eliminación son eficientes en comparación con una <strong>pila</strong> en que las operaciones solo se realizan al final.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

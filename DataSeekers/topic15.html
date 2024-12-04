@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Quick Sort</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Quick Sort</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Quick Sort</strong><br><br>
+
+                **Quick Sort** es un algoritmo de ordenamiento basado en la técnica de "divide y vencerás". Este algoritmo selecciona un "pivote", divide el arreglo en dos subarreglos según si los elementos son menores o mayores que el pivote, y luego ordena recursivamente los subarreglos.<br><br>
+
+                **Pasos principales de Quick Sort:**
+                1. Selecciona un pivote de la lista (generalmente el primer, el último o un elemento aleatorio).
+                2. Reorganiza el arreglo de modo que todos los elementos menores al pivote estén a su izquierda y los mayores a su derecha.
+                3. Ordena recursivamente las dos mitades (izquierda y derecha) de la lista.<br><br>
+
+                **Algoritmo de Quick Sort:**
+                <pre><code>
+                function quickSort(arr, low, high):
+                    if low < high:
+                        pivotIndex = partition(arr, low, high)
+                        quickSort(arr, low, pivotIndex - 1)
+                        quickSort(arr, pivotIndex + 1, high)
+
+                function partition(arr, low, high):
+                    pivot = arr[high]
+                    i = low - 1
+                    for j from low to high - 1:
+                        if arr[j] <= pivot:
+                            i++
+                            swap arr[i] and arr[j]
+                    swap arr[i + 1] and arr[high]
+                    return i + 1
+                </code></pre><br>
+
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code>
+                def quick_sort(arr):
+                    if len(arr) <= 1:
+                        return arr
+                    pivot = arr[len(arr) // 2]
+                    left = [x for x in arr if x < pivot]
+                    middle = [x for x in arr if x == pivot]
+                    right = [x for x in arr if x > pivot]
+                    return quick_sort(left) + middle + quick_sort(right)
+
+                arr = [64, 34, 25, 12, 22, 11, 90]
+                print("Arreglo ordenado:", quick_sort(arr))
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+
+                int partition(int arr[], int low, int high) {
+                    int pivot = arr[high];
+                    int i = (low - 1);
+                    for (int j = low; j < high; j++) {
+                        if (arr[j] <= pivot) {
+                            i++;
+                            int temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
+                    int temp = arr[i + 1];
+                    arr[i + 1] = arr[high];
+                    arr[high] = temp;
+                    return i + 1;
+                }
+
+                void quickSort(int arr[], int low, int high) {
+                    if (low < high) {
+                        int pi = partition(arr, low, high);
+                        quickSort(arr, low, pi - 1);
+                        quickSort(arr, pi + 1, high);
+                    }
+                }
+
+                int main() {
+                    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+                    int n = sizeof(arr) / sizeof(arr[0]);
+
+                    quickSort(arr, 0, n - 1);
+
+                    printf("Arreglo ordenado: ");
+                    for (int i = 0; i < n; i++) {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
+                    return 0;
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                function quickSort(arr) {
+                    if (arr.length <= 1) return arr;
+                    let pivot = arr[arr.length - 1];
+                    let left = [], right = [];
+                    for (let i = 0; i < arr.length - 1; i++) {
+                        if (arr[i] < pivot) left.push(arr[i]);
+                        else right.push(arr[i]);
+                    }
+                    return [...quickSort(left), pivot, ...quickSort(right)];
+                }
+
+                const arr = [64, 34, 25, 12, 22, 11, 90];
+                console.log("Arreglo ordenado:", quickSort(arr));
+                </code></pre><br>
+
+                <strong>Tiempo de Ejecución:</strong><br>
+                El tiempo de ejecución de **Quick Sort** es **O(n log n)** en el caso promedio y **O(n²)** en el peor caso. Sin embargo, con una buena elección de pivote (por ejemplo, un pivote aleatorio o el pivote mediano), el peor caso se puede evitar.<br><br>
+
+                <strong>Ventajas:</strong><br>
+                - Es muy rápido en la mayoría de los casos.<br>
+                - Su complejidad es **O(n log n)** en el caso promedio.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - Su peor caso es **O(n²)**, aunque esto se puede mitigar con una buena elección de pivote.<br>
+                - Es un algoritmo no estable, lo que significa que no garantiza el orden relativo de los elementos iguales.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

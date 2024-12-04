@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Gemini AI Integration</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Arrays Data Structures</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Arrays</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Un <strong>array</strong> (arreglo) es una estructura de datos que almacena una colección de elementos del mismo tipo en una secuencia contigua de memoria. Los elementos en un array se pueden acceder mediante un índice o subíndice, que generalmente comienza en 0.<br><br>
+
+                <strong>Características:</strong><br>
+                - <strong>Tipo homogéneo:</strong> Todos los elementos de un array son del mismo tipo de datos (ej. enteros, cadenas, objetos).<br>
+                - <strong>Índices:</strong> Los elementos de un array se acceden mediante índices. En la mayoría de los lenguajes de programación, el índice inicial es 0.<br>
+                - <strong>Tamaño fijo:</strong> El tamaño de un array es fijo en lenguajes como C o Java. Sin embargo, algunos lenguajes (como Python o JavaScript) permiten arrays dinámicos.<br>
+                - <strong>Acceso aleatorio:</strong> Los elementos de un array se pueden acceder directamente usando su índice, lo que permite un acceso eficiente a los datos.<br>
+                - <strong>Almacenamiento contiguo:</strong> Los elementos de un array se almacenan de forma continua en memoria.<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. <strong>Acceso:</strong> Obtener el valor de un elemento en el índice <code>i</code>.<br>
+                   <code>array[i]</code><br><br>
+                2. <strong>Modificación:</strong> Cambiar el valor de un elemento en el índice <code>i</code>.<br>
+                   <code>array[i] = nuevo_valor</code><br><br>
+                3. <strong>Longitud:</strong> Obtener la cantidad de elementos en un array (en Python o JavaScript).<br>
+                   <code>len(array)</code><br><br>
+                4. <strong>Recorrido:</strong> Iterar sobre todos los elementos.<br>
+                   <code>for elem in array: <br>  &nbsp;&nbsp;&nbsp;&nbsp; print(elem)</code><br><br>
+                5. <strong>Inserción:</strong> Insertar un elemento en una posición específica (algunos lenguajes permiten hacerlo, pero la mayoría de los arrays tienen tamaño fijo).<br>
+                   <code>array.insert(i, valor)</code><br><br>
+                6. <strong>Eliminación:</strong> Eliminar un elemento en una posición específica.<br>
+                   <code>del array[i]</code><br><br>
+                7. <strong>Búsqueda:</strong> Buscar un elemento en el array.<br>
+                   <code>if valor in array: <br>  &nbsp;&nbsp;&nbsp;&nbsp; print("Elemento encontrado")</code><br><br>
+                8. <strong>Ordenamiento:</strong> Ordenar los elementos en el array.<br>
+                   <code>array.sort()</code><br><br>
+
+                <strong>Ejemplos:</strong><br>
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code># Definición de un array
+              arr = [1, 2, 3, 4, 5]
+              
+              # Acceder a un elemento
+              print(arr[2])  # Salida: 3
+              
+              # Modificar un elemento
+              arr[3] = 10
+              print(arr)  # Salida: [1, 2, 3, 10, 5]
+              
+              # Recorrer el array
+              for num in arr:
+                  print(num)
+              
+              # Longitud del array
+              print(len(arr))  # Salida: 5
+              </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>#include &lt;stdio.h&gt;
+
+              int main() {
+                  // Definir un array
+                  int arr[5] = {1, 2, 3, 4, 5};
+
+                  // Acceder a un elemento
+                  printf("%d\n", arr[2]);  // Salida: 3
+
+                  // Modificar un elemento
+                  arr[3] = 10;
+                  printf("%d\n", arr[3]);  // Salida: 10
+
+                  // Longitud del array (en C, se calcula de forma manual)
+                  int length = sizeof(arr) / sizeof(arr[0]);
+                  printf("%d\n", length);  // Salida: 5
+
+                  return 0;
+              }
+              </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>// Definir un array
+              let arr = [1, 2, 3, 4, 5];
+
+              // Acceder a un elemento
+              console.log(arr[2]);  // Salida: 3
+
+              // Modificar un elemento
+              arr[3] = 10;
+              console.log(arr);  // Salida: [1, 2, 3, 10, 5]
+
+              // Recorrer el array
+              arr.forEach(num => console.log(num));
+
+              // Longitud del array
+              console.log(arr.length);  // Salida: 5
+              </code></pre><br>
+              <p>
+                <strong>Tipos de Arrays:</strong><br>
+                1. <strong>Arrays unidimensionales:</strong> Son los más comunes. Se representan como una lista de elementos.<br>
+                2. <strong>Arrays multidimensionales:</strong> Arrays de arrays. Se usan para representar matrices o tablas.<br>
+                   <code># Array 2D en Python (matriz 3x3) <br> matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code><br>
+                3. <strong>Arrays dinámicos:</strong> Algunos lenguajes como Python y JavaScript permiten arrays cuya longitud puede cambiar durante la ejecución del programa.<br>
+                   <code># Array dinámico en Python <br> arr = [1, 2, 3] <br> arr.append(4)  # Agregar elemento</code><br><br>
+
+                <strong>Desventajas de los Arrays:</strong><br>
+                - <strong>Tamaño fijo:</strong> En lenguajes como C o Java, el tamaño debe ser especificado al momento de la creación.<br>
+                - <strong>Desperdicio de memoria:</strong> Si no se utilizan todos los elementos, puede haber desperdicio de memoria.<br><br>
+
+                <strong>Comparación con otras estructuras de datos:</strong><br>
+                - Los <strong>arrays</strong> tienen un acceso más rápido debido al acceso aleatorio mediante índices.<br>
+                - Son menos flexibles en comparación con las <strong>listas enlazadas</strong> o <strong>vectores</strong> dinámicos, que pueden cambiar de tamaño fácilmente.<br><br>
+            </p>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

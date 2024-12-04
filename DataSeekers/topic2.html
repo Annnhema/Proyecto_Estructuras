@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Arrays and Functions</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Arrays and Functions</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Arrays y Funciones</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Un <strong>array</strong> es una estructura de datos que almacena una colección de elementos del mismo tipo, mientras que una <strong>función</strong> es un bloque de código reutilizable que realiza una tarea específica. Las funciones pueden tomar arrays como argumentos y devolver arrays como resultado. Las funciones sobre arrays son comunes y permiten manipular los datos almacenados.<br><br>
+
+                <strong>Funciones comunes sobre Arrays:</strong><br>
+                1. <strong>Acceso:</strong> Obtener el valor de un elemento en el índice <code>i</code>.<br>
+                   <code>array[i]</code><br><br>
+                2. <strong>Modificación:</strong> Cambiar el valor de un elemento en el índice <code>i</code>.<br>
+                   <code>array[i] = nuevo_valor</code><br><br>
+                3. <strong>Recorrido:</strong> Iterar sobre todos los elementos.<br>
+                   <code>for elem in array: <br>  &nbsp;&nbsp;&nbsp;&nbsp; print(elem)</code><br><br>
+                4. <strong>Inserción:</strong> Insertar un elemento en una posición específica.<br>
+                   <code>array.insert(i, valor)</code><br><br>
+                5. <strong>Eliminación:</strong> Eliminar un elemento en una posición específica.<br>
+                   <code>del array[i]</code><br><br>
+                6. <strong>Ordenamiento:</strong> Ordenar los elementos en el array.<br>
+                   <code>array.sort()</code><br><br>
+                7. <strong>Búsqueda:</strong> Buscar un elemento en el array.<br>
+                   <code>if valor in array: <br>  &nbsp;&nbsp;&nbsp;&nbsp; print("Elemento encontrado")</code><br><br>
+                8. <strong>Funciones Personalizadas:</strong> Crear funciones para operaciones más complejas sobre arrays.<br><br>
+
+                <strong>Ejemplos:</strong><br>
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code># Definición de un array
+              arr = [1, 2, 3, 4, 5]
+
+              # Función para recorrer e imprimir el array
+              def recorrer_array(array):
+                  for num in array:
+                      print(num)
+
+              # Llamada a la función
+              recorrer_array(arr)  # Salida: 1 2 3 4 5
+
+              # Función para modificar un elemento
+              def modificar_array(array, index, nuevo_valor):
+                  array[index] = nuevo_valor
+
+              # Llamada a la función
+              modificar_array(arr, 2, 10)
+              print(arr)  # Salida: [1, 2, 10, 4, 5]
+              </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>#include &lt;stdio.h&gt;
+
+              void recorrer_array(int array[], int size) {
+                  for (int i = 0; i &lt; size; i++) {
+                      printf("%d\n", array[i]);
+                  }
+              }
+
+              void modificar_array(int array[], int index, int nuevo_valor) {
+                  array[index] = nuevo_valor;
+              }
+
+              int main() {
+                  int arr[5] = {1, 2, 3, 4, 5};
+                  recorrer_array(arr, 5);  // Salida: 1 2 3 4 5
+
+                  modificar_array(arr, 2, 10);
+                  printf("%d\n", arr[2]);  // Salida: 10
+                  return 0;
+              }
+              </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>// Definir un array
+              let arr = [1, 2, 3, 4, 5];
+
+              // Función para recorrer e imprimir el array
+              function recorrerArray(array) {
+                  array.forEach(num => console.log(num));
+              }
+
+              // Llamada a la función
+              recorrerArray(arr);  // Salida: 1 2 3 4 5
+
+              // Función para modificar un elemento
+              function modificarArray(array, index, nuevoValor) {
+                  array[index] = nuevoValor;
+              }
+
+              // Llamada a la función
+              modificarArray(arr, 2, 10);
+              console.log(arr);  // Salida: [1, 2, 10, 4, 5]
+              </code></pre><br>
+
+                <strong>Ventajas de usar Funciones con Arrays:</strong><br>
+                - <strong>Modularidad:</strong> Puedes dividir el código en partes más pequeñas y reutilizables.<br>
+                - <strong>Claridad:</strong> Las funciones permiten que el código sea más legible y fácil de entender.<br>
+                - <strong>Reutilización:</strong> Las mismas funciones pueden ser usadas en diferentes partes del programa sin duplicar código.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - <strong>Rendimiento:</strong> Si no se manejan adecuadamente, el uso excesivo de funciones puede afectar el rendimiento, especialmente en lenguajes que no optimizan bien las llamadas a funciones.<br>
+                - <strong>Complejidad:</strong> El uso de funciones complejas puede hacer que el código sea más difícil de seguir.<br><br>
+
+                <strong>Comparación con otras estructuras de datos:</strong><br>
+                - Las <strong>funciones sobre arrays</strong> son extremadamente útiles para modularizar operaciones que se realizan de forma repetida sobre los datos.<br>
+                - Son más fáciles de usar y entender que las <strong>funciones sobre listas enlazadas</strong>, ya que los arrays son de acceso directo y su manejo es más sencillo.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

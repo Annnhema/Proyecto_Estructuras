@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Merge Sort</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Merge Sort</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Merge Sort</strong><br><br>
+
+                **Merge Sort** es un algoritmo de ordenamiento basado en la técnica de "divide y vencerás". Este algoritmo divide el arreglo en dos mitades, ordena cada mitad de manera recursiva y luego combina (o "fusiona") las dos mitades ordenadas.<br><br>
+
+                **Pasos principales de Merge Sort:**
+                1. Divide el arreglo en dos mitades.
+                2. Ordena recursivamente ambas mitades.
+                3. Fusiona las dos mitades ordenadas para obtener el arreglo final ordenado.<br><br>
+
+                **Algoritmo de Merge Sort:**
+                <pre><code>
+                function mergeSort(arr):
+                    if length(arr) <= 1:
+                        return arr
+                    mid = length(arr) // 2
+                    left = mergeSort(arr[0..mid])
+                    right = mergeSort(arr[mid..])
+                    return merge(left, right)
+
+                function merge(left, right):
+                    result = []
+                    while left and right are not empty:
+                        if left[0] < right[0]:
+                            append left[0] to result
+                            remove left[0] from left
+                        else:
+                            append right[0] to result
+                            remove right[0] from right
+                    return result + left + right
+                </code></pre><br>
+
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code>
+                def merge_sort(arr):
+                    if len(arr) <= 1:
+                        return arr
+                    mid = len(arr) // 2
+                    left = merge_sort(arr[:mid])
+                    right = merge_sort(arr[mid:])
+                    return merge(left, right)
+
+                def merge(left, right):
+                    result = []
+                    while left and right:
+                        if left[0] < right[0]:
+                            result.append(left.pop(0))
+                        else:
+                            result.append(right.pop(0))
+                    return result + left + right
+
+                arr = [64, 34, 25, 12, 22, 11, 90]
+                print("Arreglo ordenado:", merge_sort(arr))
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+                #include &lt;stdlib.h&gt;
+
+                void merge(int arr[], int l, int m, int r) {
+                    int n1 = m - l + 1;
+                    int n2 = r - m;
+                    int left[n1], right[n2];
+                    for (int i = 0; i < n1; i++)
+                        left[i] = arr[l + i];
+                    for (int j = 0; j < n2; j++)
+                        right[j] = arr[m + 1 + j];
+                    int i = 0, j = 0, k = l;
+                    while (i < n1 && j < n2) {
+                        if (left[i] <= right[j]) {
+                            arr[k] = left[i];
+                            i++;
+                        } else {
+                            arr[k] = right[j];
+                            j++;
+                        }
+                        k++;
+                    }
+                    while (i < n1) {
+                        arr[k] = left[i];
+                        i++;
+                        k++;
+                    }
+                    while (j < n2) {
+                        arr[k] = right[j];
+                        j++;
+                        k++;
+                    }
+                }
+
+                void mergeSort(int arr[], int l, int r) {
+                    if (l < r) {
+                        int m = l + (r - l) / 2;
+                        mergeSort(arr, l, m);
+                        mergeSort(arr, m + 1, r);
+                        merge(arr, l, m, r);
+                    }
+                }
+
+                int main() {
+                    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+                    int n = sizeof(arr) / sizeof(arr[0]);
+
+                    mergeSort(arr, 0, n-1);
+
+                    printf("Arreglo ordenado: ");
+                    for (int i = 0; i < n; i++) {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
+                    return 0;
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                function mergeSort(arr) {
+                    if (arr.length <= 1) return arr;
+                    const mid = Math.floor(arr.length / 2);
+                    const left = mergeSort(arr.slice(0, mid));
+                    const right = mergeSort(arr.slice(mid));
+                    return merge(left, right);
+                }
+
+                function merge(left, right) {
+                    let result = [], leftIndex = 0, rightIndex = 0;
+                    while (leftIndex < left.length && rightIndex < right.length) {
+                        if (left[leftIndex] < right[rightIndex]) {
+                            result.push(left[leftIndex]);
+                            leftIndex++;
+                        } else {
+                            result.push(right[rightIndex]);
+                            rightIndex++;
+                        }
+                    }
+                    return result.concat(left.slice(leftIndex), right.slice(rightIndex));
+                }
+
+                const arr = [64, 34, 25, 12, 22, 11, 90];
+                console.log("Arreglo ordenado:", mergeSort(arr));
+                </code></pre><br>
+
+                <strong>Tiempo de Ejecución:</strong><br>
+                El tiempo de ejecución de **Merge Sort** es **O(n log n)** en el mejor, promedio y peor caso, lo que lo convierte en un algoritmo muy eficiente.<br><br>
+
+                <strong>Ventajas:</strong><br>
+                - Es un algoritmo eficiente con tiempo de ejecución **O(n log n)**.<br>
+                - Es estable y no modifica el orden relativo de los elementos iguales.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - Requiere espacio adicional para la fusión de subarreglos, lo que lo hace menos eficiente en términos de espacio.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

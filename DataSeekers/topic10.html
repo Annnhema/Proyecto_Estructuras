@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Binary Trees - Heaps Implementation</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Binary Trees - Heaps Implementation</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Heaps</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Un <strong>heap</strong> es una estructura de árbol binario que satisface la propiedad de heap: en un <strong>max-heap</strong>, el valor de cada nodo es mayor o igual que el valor de sus hijos, y en un <strong>min-heap</strong>, el valor de cada nodo es menor o igual que el valor de sus hijos. Los heaps se utilizan principalmente para implementar colas de prioridad.<br><br>
+
+                <strong>Características:</strong><br>
+                - **Max-Heap:** El valor del nodo raíz es el mayor de todos los nodos.<br>
+                - **Min-Heap:** El valor del nodo raíz es el menor de todos los nodos.<br>
+                - **Completitud:** Los heaps son árboles binarios completos, lo que significa que todos los niveles del árbol están completamente llenos, excepto posiblemente el último, que se llena de izquierda a derecha.<br>
+                - **Propiedad de Heap:** En un max-heap, cada nodo debe ser mayor o igual que sus hijos. En un min-heap, cada nodo debe ser menor o igual que sus hijos.<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. **Insertar:** Insertar un nuevo valor en el heap.<br>
+                   <code>insert(heap, value)</code><br><br>
+                2. **Eliminar:** Eliminar el nodo raíz del heap (generalmente el valor máximo en un max-heap o el valor mínimo en un min-heap).<br>
+                   <code>remove(heap)</code><br><br>
+                3. **Heapify:** Reorganizar el heap para mantener la propiedad de heap después de una operación de inserción o eliminación.<br>
+                   <code>heapify(heap, index)</code><br><br>
+
+                <strong>Ejemplo de implementación de un Max-Heap en pseudocódigo:</strong><br>
+                <pre><code>
+                class MaxHeap {
+                    heap = []
+                    insert(value) {
+                        this.heap.push(value)
+                        this.heapifyUp()
+                    }
+
+                    remove() {
+                        if (this.heap.length > 1) {
+                            const max = this.heap[0]
+                            this.heap[0] = this.heap.pop()
+                            this.heapifyDown(0)
+                            return max
+                        }
+                        return this.heap.pop()
+                    }
+
+                    heapifyUp() {
+                        let index = this.heap.length - 1
+                        while (index > 0) {
+                            const parentIndex = Math.floor((index - 1) / 2)
+                            if (this.heap[parentIndex] >= this.heap[index]) break
+                            [this.heap[parentIndex], this.heap[index]] = [this.heap[index], this.heap[parentIndex]]
+                            index = parentIndex
+                        }
+                    }
+
+                    heapifyDown(index) {
+                        const leftChildIndex = 2 * index + 1
+                        const rightChildIndex = 2 * index + 2
+                        let largest = index
+
+                        if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] > this.heap[largest]) {
+                            largest = leftChildIndex
+                        }
+
+                        if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] > this.heap[largest]) {
+                            largest = rightChildIndex
+                        }
+
+                        if (largest !== index) {
+                            [this.heap[index], this.heap[largest]] = [this.heap[largest], this.heap[index]]
+                            this.heapifyDown(largest)
+                        }
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+                #include &lt;stdlib.h&gt;
+
+                struct MaxHeap {
+                    int* heap;
+                    int size;
+                    int capacity;
+                };
+
+                void swap(int* a, int* b) {
+                    int temp = *a;
+                    *a = *b;
+                    *b = temp;
+                }
+
+                void heapifyUp(struct MaxHeap* h, int index) {
+                    while (index > 0) {
+                        int parentIndex = (index - 1) / 2;
+                        if (h->heap[parentIndex] >= h->heap[index]) break;
+                        swap(&h->heap[parentIndex], &h->heap[index]);
+                        index = parentIndex;
+                    }
+                }
+
+                void heapifyDown(struct MaxHeap* h, int index) {
+                    int leftChild = 2 * index + 1;
+                    int rightChild = 2 * index + 2;
+                    int largest = index;
+
+                    if (leftChild < h->size && h->heap[leftChild] > h->heap[largest]) {
+                        largest = leftChild;
+                    }
+                    if (rightChild < h->size && h->heap[rightChild] > h->heap[largest]) {
+                        largest = rightChild;
+                    }
+
+                    if (largest != index) {
+                        swap(&h->heap[index], &h->heap[largest]);
+                        heapifyDown(h, largest);
+                    }
+                }
+
+                void insert(struct MaxHeap* h, int value) {
+                    if (h->size == h->capacity) return;  // Heap lleno
+                    h->heap[h->size++] = value;
+                    heapifyUp(h, h->size - 1);
+                }
+
+                int remove(struct MaxHeap* h) {
+                    if (h->size == 0) return -1;  // Heap vacío
+                    int max = h->heap[0];
+                    h->heap[0] = h->heap[--h->size];
+                    heapifyDown(h, 0);
+                    return max;
+                }
+                </code></pre><br>
+
+                <strong>Ventajas de los Heaps:</strong><br>
+                - Las operaciones de inserción y eliminación son rápidas, con una complejidad O(log n).<br>
+                - Son ideales para implementar colas de prioridad.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - Aunque los heaps son eficientes para inserciones y eliminaciones, la búsqueda de un elemento específico no es eficiente, ya que requiere recorrer todo el heap.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

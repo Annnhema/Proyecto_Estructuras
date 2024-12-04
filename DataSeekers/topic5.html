@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - List Data Structures</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>List Data Structures</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Listas</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Una <strong>lista</strong> es una estructura de datos lineal que almacena una colección de elementos, en la cual los elementos pueden estar de forma contigua o no en la memoria. Las listas pueden ser de diferentes tipos: listas enlazadas, listas doblemente enlazadas, listas circulares, entre otras.<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. <strong>Agregar un elemento:</strong> Insertar un elemento en la lista.<br>
+                   <code>list.append(elemento)</code><br><br>
+                2. <strong>Eliminar un elemento:</strong> Eliminar un elemento de la lista.<br>
+                   <code>list.remove(elemento)</code><br><br>
+                3. <strong>Buscar un elemento:</strong> Buscar un elemento en la lista.<br>
+                   <code>list.index(elemento)</code><br><br>
+                4. <strong>Recorrer la lista:</strong> Iterar sobre todos los elementos de la lista.<br>
+                   <code>for elem in list: <br>  &nbsp;&nbsp;&nbsp;&nbsp; print(elem)</code><br><br>
+
+                <strong>Ejemplos:</strong><br>
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code># Definición de una lista
+              lista = [1, 2, 3, 4, 5]
+              
+              # Agregar un elemento
+              lista.append(6)
+              
+              # Eliminar un elemento
+              lista.remove(3)
+              
+              # Buscar un elemento
+              print(lista.index(4))  # Salida: 2
+              
+              # Recorrer la lista
+              for elem in lista:
+                  print(elem)
+              </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>#include &lt;stdio.h&gt;
+              #include &lt;stdlib.h&gt;
+
+              typedef struct Node {
+                  int data;
+                  struct Node* next;
+              } Node;
+
+              // Función para agregar un elemento al final
+              void append(Node** head_ref, int new_data) {
+                  Node* new_node = (Node*)malloc(sizeof(Node));
+                  Node* last = *head_ref;
+                  new_node->data = new_data;
+                  new_node->next = NULL;
+
+                  if (*head_ref == NULL) {
+                      *head_ref = new_node;
+                      return;
+                  }
+                  while (last->next != NULL) {
+                      last = last->next;
+                  }
+                  last->next = new_node;
+              }
+
+              // Función para imprimir la lista
+              void printList(Node* node) {
+                  while (node != NULL) {
+                      printf("%d -> ", node->data);
+                      node = node->next;
+                  }
+                  printf("NULL\n");
+              }
+
+              int main() {
+                  Node* head = NULL;
+                  append(&head, 1);
+                  append(&head, 2);
+                  append(&head, 3);
+                  printList(head);
+                  return 0;
+              }
+              </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>// Definir una lista (Array en JS)
+              let list = [1, 2, 3, 4, 5];
+              
+              // Agregar un elemento
+              list.push(6);
+              
+              // Eliminar un elemento
+              list.splice(list.indexOf(3), 1);
+              
+              // Buscar un elemento
+              console.log(list.indexOf(4));  // Salida: 2
+              
+              // Recorrer la lista
+              list.forEach(elem => console.log(elem));
+              </code></pre><br>
+
+                <strong>Desventajas:</strong><br>
+                - Las operaciones de inserción y eliminación pueden ser costosas si no se usa una implementación eficiente, como las listas enlazadas.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
