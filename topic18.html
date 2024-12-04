@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Binary Search</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Binary Search</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Binary Search</strong><br><br>
+
+                **Binary Search** es un algoritmo eficiente para buscar un elemento en una lista ordenada. Funciona dividiendo repetidamente el rango de búsqueda a la mitad. Si el valor buscado es menor que el valor medio, el algoritmo descarta la mitad superior, y si el valor buscado es mayor, descarta la mitad inferior.<br><br>
+
+                **Características del Binary Search:**
+                - **Eficiencia:** Tiene una complejidad temporal de O(log n), lo que lo hace mucho más rápido que otros algoritmos de búsqueda como el Linear Search.
+                - **Requiere lista ordenada:** El Binary Search solo funciona en listas que están ordenadas.
+                - **División recursiva:** El algoritmo sigue un enfoque recursivo o iterativo, reduciendo el tamaño del problema a la mitad en cada paso.
+
+                **Pasos del algoritmo:**
+                1. Comienza en el punto medio de la lista ordenada.
+                2. Si el valor buscado es igual al valor medio, devuelve la posición.
+                3. Si el valor buscado es menor, repite la búsqueda en la mitad inferior.
+                4. Si el valor buscado es mayor, repite la búsqueda en la mitad superior.
+                5. Si no se encuentra el valor, devuelve un valor que indica que el elemento no está presente.
+
+                **Algoritmo en pseudocódigo:**
+                <pre><code>
+                function binarySearch(arr, target):
+                    left = 0
+                    right = length(arr) - 1
+                    while left <= right:
+                        mid = (left + right) / 2
+                        if arr[mid] == target:
+                            return mid
+                        elif arr[mid] < target:
+                            left = mid + 1
+                        else:
+                            right = mid - 1
+                    return -1
+                </code></pre><br>
+
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code>
+                def binary_search(arr, target):
+                    left = 0
+                    right = len(arr) - 1
+                    while left <= right:
+                        mid = (left + right) // 2
+                        if arr[mid] == target:
+                            return mid
+                        elif arr[mid] < target:
+                            left = mid + 1
+                        else:
+                            right = mid - 1
+                    return -1
+
+                arr = [1, 3, 5, 7, 9, 11, 13]
+                target = 7
+                result = binary_search(arr, target)
+                if result != -1:
+                    print(f"Elemento encontrado en el índice {result}")
+                else:
+                    print("Elemento no encontrado")
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+
+                int binarySearch(int arr[], int n, int target) {
+                    int left = 0;
+                    int right = n - 1;
+                    while (left <= right) {
+                        int mid = (left + right) / 2;
+                        if (arr[mid] == target)
+                            return mid;
+                        else if (arr[mid] < target)
+                            left = mid + 1;
+                        else
+                            right = mid - 1;
+                    }
+                    return -1;
+                }
+
+                int main() {
+                    int arr[] = {1, 3, 5, 7, 9, 11, 13};
+                    int target = 7;
+                    int n = sizeof(arr) / sizeof(arr[0]);
+                    int result = binarySearch(arr, n, target);
+                    if (result != -1)
+                        printf("Elemento encontrado en el índice %d\n", result);
+                    else
+                        printf("Elemento no encontrado\n");
+
+                    return 0;
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                function binarySearch(arr, target) {
+                    let left = 0;
+                    let right = arr.length - 1;
+                    while (left <= right) {
+                        let mid = Math.floor((left + right) / 2);
+                        if (arr[mid] === target)
+                            return mid;
+                        else if (arr[mid] < target)
+                            left = mid + 1;
+                        else
+                            right = mid - 1;
+                    }
+                    return -1;
+                }
+
+                let arr = [1, 3, 5, 7, 9, 11, 13];
+                let target = 7;
+                let result = binarySearch(arr, target);
+                if (result !== -1) {
+                    console.log("Elemento encontrado en el índice " + result);
+                } else {
+                    console.log("Elemento no encontrado");
+                }
+                </code></pre><br>
+
+                **Ventajas del Binary Search:**
+                - Muy eficiente para listas grandes debido a su complejidad O(log n).
+                - Funciona rápidamente cuando se trata de listas ordenadas.
+
+                **Desventajas del Binary Search:**
+                - Solo funciona en listas ordenadas.
+                - Requiere que la lista se mantenga ordenada, lo que puede ser costoso si los elementos cambian frecuentemente.
+
+            </p>
+        </div>
+    </div>
+</body>
+</html>

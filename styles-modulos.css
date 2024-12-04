@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(90deg, blue, pink);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.principal {
+    text-align: center;
+    padding: 20px;
+    
+}
+
+p{
+    line-height: 2;
+}
+
+.contenido {
+    text-align: justify;
+    margin: auto;
+    width: 60%; /* Ajustar el ancho según sea necesario */
+    background: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Efecto de blur */
+}
+
+h2 {
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo para bloques de código */
+pre {
+    background-color: #2e2e2e; /* Fondo oscuro para destacar el código */
+    color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 16px; /* Aumentar tamaño de fuente */
+    line-height: 1.6; /* Aumentar espacio entre líneas */
+    overflow-x: auto; /* Habilitar desplazamiento horizontal */
+    white-space: pre-wrap; /* Ajustar el contenido sin cortar */
+    word-break: break-word; /* Romper palabras largas si es necesario */
+    margin: 20px 0;
+}
+
+/* Ajustes dentro del bloque de código */
+code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 16px; /* Tamaño consistente */
+    line-height: inherit; /* Asegurar consistencia con el pre */
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Binary Trees</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Binary Trees</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Binary Trees</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Un <strong>árbol binario</strong> es una estructura de datos jerárquica en la que cada nodo tiene como máximo dos hijos, denominados hijo izquierdo y hijo derecho. El primer nodo del árbol se denomina raíz, y los nodos sin hijos se llaman hojas.<br><br>
+
+                <strong>Características:</strong><br>
+                - **Raíz:** El nodo principal del árbol.<br>
+                - **Hijos:** Cada nodo tiene un máximo de dos hijos, izquierdo y derecho.<br>
+                - **Hojas:** Los nodos que no tienen hijos.<br>
+                - **Altura del árbol:** Es la longitud del camino más largo desde la raíz hasta una hoja.<br>
+                - **Profundidad de un nodo:** Es la distancia desde la raíz hasta ese nodo.<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. **Inserción:** Agregar un nuevo nodo en el árbol.<br>
+                   <code>insert(root, value)</code><br><br>
+                2. **Eliminación:** Eliminar un nodo del árbol.<br>
+                   <code>delete(root, value)</code><br><br>
+                3. **Recorrido (In-order, Pre-order, Post-order):** Traversar el árbol de diferentes maneras para realizar operaciones.<br>
+                   <code>inorder(node)</code><br><br>
+                4. **Búsqueda:** Encontrar un valor en el árbol.<br>
+                   <code>search(root, value)</code><br><br>
+
+                <strong>Tipos de Árboles Binarios:</strong><br>
+                1. **Árbol Binario de Búsqueda (BST):** En este tipo de árbol binario, el valor de cada nodo es mayor que todos los valores de su subárbol izquierdo y menor que todos los valores de su subárbol derecho.<br>
+                2. **Árbol Binario Completo:** Todos los niveles, excepto posiblemente el último, están completamente llenos, y todos los nodos están tan a la izquierda como sea posible.<br>
+                3. **Árbol Binario Balanceado:** Un árbol binario donde la diferencia entre las alturas de los subárboles izquierdo y derecho de cualquier nodo es como máximo 1.<br><br>
+
+                <strong>Ejemplo de implementación en pseudocódigo:</strong><br>
+                <pre><code>
+                class Node {
+                    value
+                    left
+                    right
+                }
+
+                function insert(root, value) {
+                    if (root == null) {
+                        root = new Node(value)
+                    } else if (value < root.value) {
+                        root.left = insert(root.left, value)
+                    } else {
+                        root.right = insert(root.right, value)
+                    }
+                    return root
+                }
+
+                function inorder(root) {
+                    if (root != null) {
+                        inorder(root.left)
+                        print(root.value)
+                        inorder(root.right)
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+                #include &lt;stdlib.h&gt;
+
+                struct Node {
+                    int value;
+                    struct Node *left, *right;
+                };
+
+                struct Node* insert(struct Node* node, int value) {
+                    if (node == NULL) {
+                        node = (struct Node*)malloc(sizeof(struct Node));
+                        node->value = value;
+                        node->left = node->right = NULL;
+                    } else if (value < node->value) {
+                        node->left = insert(node->left, value);
+                    } else {
+                        node->right = insert(node->right, value);
+                    }
+                    return node;
+                }
+
+                void inorder(struct Node* root) {
+                    if (root != NULL) {
+                        inorder(root->left);
+                        printf("%d ", root->value);
+                        inorder(root->right);
+                    }
+                }
+
+                int main() {
+                    struct Node* root = NULL;
+                    root = insert(root, 50);
+                    insert(root, 30);
+                    insert(root, 70);
+                    insert(root, 20);
+                    insert(root, 40);
+
+                    inorder(root);  // Salida: 20 30 40 50 70
+                    return 0;
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                class Node {
+                    constructor(value) {
+                        this.value = value;
+                        this.left = null;
+                        this.right = null;
+                    }
+                }
+
+                function insert(root, value) {
+                    if (root == null) {
+                        return new Node(value);
+                    }
+                    if (value < root.value) {
+                        root.left = insert(root.left, value);
+                    } else {
+                        root.right = insert(root.right, value);
+                    }
+                    return root;
+                }
+
+                function inorder(root) {
+                    if (root != null) {
+                        inorder(root.left);
+                        console.log(root.value);
+                        inorder(root.right);
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ventajas de los Árboles Binarios:</strong><br>
+                - Permiten un acceso eficiente a los elementos mediante técnicas de recorrido.<br>
+                - Son útiles para implementar estructuras de datos como tablas de hash, árboles de búsqueda binaria y heaps.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - Si no se mantienen balanceados, las operaciones de búsqueda, inserción y eliminación pueden volverse ineficientes (por ejemplo, si el árbol se convierte en una lista enlazada).<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

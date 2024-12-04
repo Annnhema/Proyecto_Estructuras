@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - ADT Graphs</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>ADT Graphs</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre ADT Graphs</strong><br><br>
+
+                <strong>Definición:</strong><br>
+                Un <strong>grafo</strong> es una estructura de datos abstracta que se compone de un conjunto de nodos (también llamados vértices) y un conjunto de aristas (o bordes) que conectan estos nodos. Los grafos pueden ser dirigidos (cuando las aristas tienen dirección) o no dirigidos (cuando las aristas no tienen dirección).<br><br>
+
+                <strong>Características:</strong><br>
+                - Los grafos pueden representar relaciones complejas entre elementos, como redes sociales, rutas de transporte, o conexiones de internet.<br>
+                - Un grafo puede ser finito o infinito, dependiendo de la aplicación.<br>
+                - Los grafos se pueden representar en memoria de varias maneras, como listas de adyacencia o matrices de adyacencia.<br>
+                - Los grafos pueden tener ciclos (circuitos) o ser acíclicos.<br>
+                - En un grafo dirigido, las aristas tienen una dirección, es decir, van de un nodo a otro. En un grafo no dirigido, las aristas no tienen dirección.<br><br>
+
+                <strong>Operaciones comunes:</strong><br>
+                1. <strong>Agregar vértice:</strong> Insertar un nuevo nodo en el grafo.<br>
+                   <code>graph.addVertex(vertex)</code><br><br>
+                2. <strong>Eliminar vértice:</strong> Eliminar un vértice y todas las aristas asociadas.<br>
+                   <code>graph.removeVertex(vertex)</code><br><br>
+                3. <strong>Agregar arista:</strong> Conectar dos vértices con una arista.<br>
+                   <code>graph.addEdge(vertex1, vertex2)</code><br><br>
+                4. <strong>Eliminar arista:</strong> Eliminar la conexión entre dos vértices.<br>
+                   <code>graph.removeEdge(vertex1, vertex2)</code><br><br>
+                5. <strong>Recorrido (DFS, BFS):</strong> Recorrer todos los vértices del grafo mediante algoritmos de búsqueda como Depth-First Search (DFS) o Breadth-First Search (BFS).<br>
+                   <code>graph.dfs(vertex)</code><br><br>
+
+                <strong>Tipos de Grafos:</strong><br>
+                1. <strong>Grafos dirigidos (Digraphs):</strong> En estos grafos, las aristas tienen una dirección específica, por lo que se representan como flechas.<br>
+                2. <strong>Grafos no dirigidos:</strong> Las aristas no tienen dirección, lo que significa que las conexiones entre vértices son bidireccionales.<br>
+                3. <strong>Grafos ponderados:</strong> Cada arista tiene un valor o peso asociado, representando algún tipo de coste o distancia entre los vértices.<br>
+                4. <strong>Grafos acíclicos:</strong> Grafos que no tienen ciclos, es decir, no hay un camino que vuelva al punto de inicio.<br>
+                5. <strong>Grafos completos:</strong> Grafos donde existe una arista entre cada par de vértices.<br><br>
+
+                <strong>Ejemplo de implementación en pseudocódigo:</strong><br>
+                <pre><code>
+                class Graph {
+                    vertices
+                    edges
+
+                    addVertex(vertex) {
+                        this.vertices.push(vertex)
+                        this.edges[vertex] = []
+                    }
+
+                    addEdge(vertex1, vertex2) {
+                        this.edges[vertex1].push(vertex2)
+                        this.edges[vertex2].push(vertex1)  // Para grafos no dirigidos
+                    }
+
+                    dfs(vertex) {
+                        let visited = []
+                        function dfsHelper(v) {
+                            visited.push(v)
+                            this.edges[v].forEach(neighbor => {
+                                if (!visited.includes(neighbor)) {
+                                    dfsHelper(neighbor)
+                                }
+                            })
+                        }
+                        dfsHelper(vertex)
+                        return visited
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include <stdio.h>
+                #include <stdlib.h>
+
+                struct Graph {
+                    int numVertices;
+                    int** adjMatrix;
+                };
+
+                void addEdge(struct Graph* g, int start, int end) {
+                    g->adjMatrix[start][end] = 1;
+                    g->adjMatrix[end][start] = 1;  // Para grafos no dirigidos
+                }
+
+                void dfs(struct Graph* g, int vertex, int* visited) {
+                    visited[vertex] = 1;
+                    printf("%d ", vertex);
+                    for (int i = 0; i < g->numVertices; i++) {
+                        if (g->adjMatrix[vertex][i] == 1 && !visited[i]) {
+                            dfs(g, i, visited);
+                        }
+                    }
+                }
+
+                int main() {
+                    struct Graph g;
+                    g.numVertices = 5;
+                    g.adjMatrix = (int**)malloc(g.numVertices * sizeof(int*));
+                    for (int i = 0; i < g.numVertices; i++) {
+                        g.adjMatrix[i] = (int*)malloc(g.numVertices * sizeof(int));
+                        for (int j = 0; j < g.numVertices; j++) {
+                            g.adjMatrix[i][j] = 0;
+                        }
+                    }
+
+                    addEdge(&g, 0, 1);
+                    addEdge(&g, 0, 2);
+                    addEdge(&g, 1, 3);
+                    addEdge(&g, 2, 4);
+
+                    int visited[5] = {0};
+                    dfs(&g, 0, visited);
+
+                    return 0;
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                class Graph {
+                    constructor() {
+                        this.vertices = []
+                        this.edges = {}
+                    }
+
+                    addVertex(vertex) {
+                        this.vertices.push(vertex)
+                        this.edges[vertex] = []
+                    }
+
+                    addEdge(vertex1, vertex2) {
+                        this.edges[vertex1].push(vertex2)
+                        this.edges[vertex2].push(vertex1)  // Para grafos no dirigidos
+                    }
+
+                    dfs(vertex) {
+                        let visited = []
+                        const dfsHelper = (v) => {
+                            visited.push(v)
+                            this.edges[v].forEach(neighbor => {
+                                if (!visited.includes(neighbor)) {
+                                    dfsHelper(neighbor)
+                                }
+                            })
+                        }
+                        dfsHelper(vertex)
+                        return visited
+                    }
+                }
+                </code></pre><br>
+
+                <strong>Ventajas de los Grafos:</strong><br>
+                - Son útiles para representar estructuras complejas como redes sociales, rutas de transporte, mapas, y más.<br>
+                - Permiten representar relaciones no lineales y pueden ser dirigidos o no dirigidos, dependiendo de la aplicación.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - Los grafos pueden ser más complejos de implementar y manipular que otras estructuras de datos más simples como listas o pilas.<br>
+                - En algunos casos, la búsqueda y el recorrido de los nodos pueden ser costosos en términos de tiempo y espacio.<br><br>
+
+                <strong>Comparación con otras estructuras de datos:</strong><br>
+                - Los <strong>grafos</strong> son mucho más generales y flexibles que las <strong>listas enlazadas</strong> o <strong>árboles</strong>, ya que pueden representar cualquier tipo de relación entre los nodos.
+                - Los grafos también permiten representar relaciones de "muchos a muchos", mientras que las listas y los árboles están limitados a relaciones jerárquicas o lineales.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

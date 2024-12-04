@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Traversing Trees</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Traversing Trees (Recorrido de Árboles)</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre el Recorrido de Árboles</strong><br><br>
+
+                Un **recorrido de árbol** es el proceso de visitar cada nodo en un árbol de manera sistemática. Existen diferentes formas de recorrer un árbol, y cada una tiene sus propios usos dependiendo de la estructura del árbol y del problema a resolver. Los recorridos más comunes son:
+
+                <strong>Tipos de Recorrido de Árboles:</strong><br><br>
+
+                1. **Preorden (Pre-order):** En este recorrido, el nodo raíz se visita primero, luego se recorren recursivamente los subárboles izquierdo y derecho.
+                <br><br>
+                   <strong>Algoritmo de Preorden:</strong>
+                   <pre><code>
+                   function preOrder(node):
+                       if node is not null:
+                           print(node.value)
+                           preOrder(node.left)
+                           preOrder(node.right)
+                   </code></pre><br>
+                   Este recorrido es útil cuando se desea procesar un nodo antes de sus subnodos, por ejemplo, para copias de árboles.<br><br>
+
+                2. **Inorden (In-order):** En el recorrido inorden, se recorre recursivamente el subárbol izquierdo, luego se visita el nodo raíz, y finalmente el subárbol derecho.
+                <br><br>
+                   <strong>Algoritmo de Inorden:</strong>
+                   <pre><code>
+                   function inOrder(node):
+                       if node is not null:
+                           inOrder(node.left)
+                           print(node.value)
+                           inOrder(node.right)
+                   </code></pre><br>
+                   Este recorrido es muy útil en árboles binarios de búsqueda, ya que visita los nodos en orden ascendente.<br><br>
+
+                3. **Postorden (Post-order):** En este recorrido, se recorren recursivamente los subárboles izquierdo y derecho antes de visitar el nodo raíz.
+                <br><br>
+                   <strong>Algoritmo de Postorden:</strong>
+                   <pre><code>
+                   function postOrder(node):
+                       if node is not null:
+                           postOrder(node.left)
+                           postOrder(node.right)
+                           print(node.value)
+                   </code></pre><br>
+                   Este recorrido es útil cuando se deben procesar los subárboles antes de procesar el nodo raíz, como cuando se eliminan nodos de un árbol.<br><br>
+
+                4. **Nivel por Nivel (Level-order):** Este recorrido visita los nodos de un árbol nivel por nivel. Generalmente se implementa utilizando una cola (queue) para gestionar el orden de los nodos.
+                <br><br>
+                   <strong>Algoritmo de Nivel por Nivel:</strong>
+                   <pre><code>
+                   function levelOrder(root):
+                       if root is null:
+                           return
+                       queue = [root]
+                       while queue is not empty:
+                           node = queue.dequeue()
+                           print(node.value)
+                           if node.left is not null:
+                               queue.enqueue(node.left)
+                           if node.right is not null:
+                               queue.enqueue(node.right)
+                   </code></pre><br>
+                   Este recorrido es útil cuando se desea procesar los nodos de un árbol en el orden en que están a nivel de profundidad.<br><br>
+
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code>
+                # Definir el nodo de un árbol
+                class Node:
+                    def __init__(self, value):
+                        self.value = value
+                        self.left = None
+                        self.right = None
+
+                # Recorrido Preorden
+                def pre_order(node):
+                    if node:
+                        print(node.value)
+                        pre_order(node.left)
+                        pre_order(node.right)
+
+                # Recorrido Inorden
+                def in_order(node):
+                    if node:
+                        in_order(node.left)
+                        print(node.value)
+                        in_order(node.right)
+
+                # Recorrido Postorden
+                def post_order(node):
+                    if node:
+                        post_order(node.left)
+                        post_order(node.right)
+                        print(node.value)
+
+                # Ejemplo de árbol binario
+                root = Node(1)
+                root.left = Node(2)
+                root.right = Node(3)
+                root.left.left = Node(4)
+                root.left.right = Node(5)
+
+                print("Preorden:")
+                pre_order(root)
+
+                print("Inorden:")
+                in_order(root)
+
+                print("Postorden:")
+                post_order(root)
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+
+                struct Node {
+                    int value;
+                    struct Node* left;
+                    struct Node* right;
+                };
+
+                void preOrder(struct Node* node) {
+                    if (node != NULL) {
+                        printf("%d ", node->value);
+                        preOrder(node->left);
+                        preOrder(node->right);
+                    }
+                }
+
+                void inOrder(struct Node* node) {
+                    if (node != NULL) {
+                        inOrder(node->left);
+                        printf("%d ", node->value);
+                        inOrder(node->right);
+                    }
+                }
+
+                void postOrder(struct Node* node) {
+                    if (node != NULL) {
+                        postOrder(node->left);
+                        postOrder(node->right);
+                        printf("%d ", node->value);
+                    }
+                }
+
+                int main() {
+                    struct Node root = {1, NULL, NULL};
+                    struct Node left = {2, NULL, NULL};
+                    struct Node right = {3, NULL, NULL};
+
+                    root.left = &left;
+                    root.right = &right;
+
+                    printf("Preorden: ");
+                    preOrder(&root);
+                    printf("\n");
+
+                    printf("Inorden: ");
+                    inOrder(&root);
+                    printf("\n");
+
+                    printf("Postorden: ");
+                    postOrder(&root);
+                    printf("\n");
+
+                    return 0;
+                }
+                </code></pre><br>
+
+                <strong>Conclusiones:</strong><br>
+                Los recorridos de árbol son fundamentales para navegar y procesar estructuras de árbol en diversos algoritmos. Cada tipo de recorrido tiene aplicaciones específicas:
+                - **Preorden** es útil para tareas como la clonación de árboles.
+                - **Inorden** es esencial en árboles binarios de búsqueda.
+                - **Postorden** es útil cuando se procesan los hijos antes que el nodo raíz.
+                - **Nivel por nivel** es útil para recorrer árboles a nivel de profundidad.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

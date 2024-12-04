@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSeekers - Bubble Sort</title>
+    <link rel="stylesheet" href="styles-modulos.css">
+</head>
+<body>
+    <div class="principal">
+        <h2>Bubble Sort</h2>
+        <div class="contenido">
+            <p>
+                <strong>Información sobre Bubble Sort</strong><br><br>
+
+                **Bubble Sort** es un algoritmo de ordenamiento sencillo que funciona comparando pares de elementos adyacentes y cambiándolos de posición si están en el orden incorrecto. Este proceso se repite hasta que todos los elementos estén en su lugar ordenado.<br><br>
+
+                <strong>Descripción del Algoritmo:</strong><br>
+                El algoritmo de Bubble Sort recorre la lista varias veces. En cada pasada, se compara un par de elementos adyacentes y se intercambian si están fuera de orden. Este proceso se repite para cada elemento, y después de cada pasada, el elemento más grande "burbujeará" hasta la posición correcta en el final de la lista.<br><br>
+
+                **Pasos principales de Bubble Sort:**
+                1. Compara el primer elemento con el siguiente. Si están en el orden incorrecto, intercámbialos.
+                2. Repite este proceso hasta el final de la lista.
+                3. Luego, repite el proceso para todos los elementos, excluyendo los que ya están en la posición correcta.
+                4. Este proceso se repite hasta que no haya más intercambios que realizar, lo que indica que la lista está ordenada.<br><br>
+
+                <strong>Algoritmo de Bubble Sort:</strong>
+                <pre><code>
+                function bubbleSort(arr):
+                    n = length(arr)
+                    for i from 0 to n-1:
+                        for j from 0 to n-i-2:
+                            if arr[j] > arr[j+1]:
+                                swap arr[j] and arr[j+1]
+                </code></pre><br>
+
+                <strong>Ejemplo en Python:</strong><br>
+                <pre><code>
+                def bubble_sort(arr):
+                    n = len(arr)
+                    for i in range(n):
+                        for j in range(0, n-i-1):
+                            if arr[j] > arr[j+1]:
+                                arr[j], arr[j+1] = arr[j+1], arr[j]
+                    return arr
+
+                arr = [64, 34, 25, 12, 22, 11, 90]
+                print("Arreglo original:", arr)
+                sorted_arr = bubble_sort(arr)
+                print("Arreglo ordenado:", sorted_arr)
+                </code></pre><br>
+
+                <strong>Ejemplo en C:</strong><br>
+                <pre><code>
+                #include &lt;stdio.h&gt;
+
+                void bubbleSort(int arr[], int n) {
+                    for (int i = 0; i < n-1; i++) {
+                        for (int j = 0; j < n-i-1; j++) {
+                            if (arr[j] > arr[j+1]) {
+                                int temp = arr[j];
+                                arr[j] = arr[j+1];
+                                arr[j+1] = temp;
+                            }
+                        }
+                    }
+                }
+
+                int main() {
+                    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+                    int n = sizeof(arr)/sizeof(arr[0]);
+
+                    printf("Arreglo original: ");
+                    for (int i = 0; i < n; i++) {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
+
+                    bubbleSort(arr, n);
+
+                    printf("Arreglo ordenado: ");
+                    for (int i = 0; i < n; i++) {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
+
+                    return 0;
+                }
+                </code></pre><br>
+
+                <strong>Ejemplo en JavaScript:</strong><br>
+                <pre><code>
+                function bubbleSort(arr) {
+                    let n = arr.length;
+                    for (let i = 0; i < n; i++) {
+                        for (let j = 0; j < n-i-1; j++) {
+                            if (arr[j] > arr[j+1]) {
+                                [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
+                            }
+                        }
+                    }
+                    return arr;
+                }
+
+                let arr = [64, 34, 25, 12, 22, 11, 90];
+                console.log("Arreglo original:", arr);
+                let sortedArr = bubbleSort(arr);
+                console.log("Arreglo ordenado:", sortedArr);
+                </code></pre><br>
+
+                <strong>Tiempo de Ejecución:</strong><br>
+                El tiempo de ejecución del algoritmo **Bubble Sort** es **O(n²)** en el peor y en el caso promedio, donde **n** es el número de elementos en el arreglo. Debido a esto, no es eficiente para arreglos grandes.<br><br>
+
+                <strong>Ventajas:</strong><br>
+                - Sencillo de entender e implementar.<br>
+                - No requiere espacio adicional, ya que es un algoritmo de ordenamiento en el lugar.<br><br>
+
+                <strong>Desventajas:</strong><br>
+                - Tiene una complejidad de tiempo cuadrática **O(n²)**, lo que lo hace ineficiente para listas grandes.<br><br>
+
+                <strong>Comparación con otros algoritmos de ordenamiento:</strong><br>
+                - En comparación con algoritmos como **Quick Sort** y **Merge Sort**, **Bubble Sort** es mucho más lento, especialmente cuando se trata de listas grandes.<br>
+                - Sin embargo, debido a su sencillez, **Bubble Sort** puede ser útil en situaciones donde el número de elementos es pequeño o cuando la lista ya está casi ordenada.<br><br>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
